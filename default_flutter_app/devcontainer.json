@@ -1,0 +1,24 @@
+{
+	"name" : "flutter environment",
+	"dockerFile" : "Dockerfile",
+	
+	"customizations" : {
+		
+		"vscode" : {
+		
+			"settings" : { 
+
+				"terminal.integrated.shell.linux" : "/bin/bash"
+
+			},
+			"extensions" : [ 
+		
+			"Dart-Code.dart-code",
+			"Dart-Code.flutter"
+
+			]
+		}
+	},
+
+	"postCreateCommand" : "flutter create test_project"
+}
