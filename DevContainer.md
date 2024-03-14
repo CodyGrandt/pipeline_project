@@ -18,5 +18,6 @@
 * In order to setup the DevContainer and Docker for the first time, please refer to the README in this directory.
 * 
 ## Challenges and Solutions
-* One challenge I faced in the beginning was committing my changes to GitHub.  For some reason, the commit would just load forever and never commit.  To solve this problem, I discovered that using the command `git commit -m 'insertmessagehere'`
+* One challenge I faced in the beginning was committing my changes to GitHub.  For some reason, the commit would just load forever and never commit.  To solve this problem, I discovered that using the command `git commit -m 'insertmessagehere'`  This finally committed my changes to GitHub as expected.
+* Another challenge I faced when building my DevContainer was that my DevContainer could not find my source code when I was using a .devcontainer file to house my DevContainer and Dockerfile.  While not the best solution stylistically, currently I have my Dockerfile and DevContainer directly in the same folder as my app source code.  This allows the DevContainer to find my code.
 ## Conclusion
