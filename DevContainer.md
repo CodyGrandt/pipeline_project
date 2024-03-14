@@ -7,7 +7,7 @@
     * In our use case, this is extremely important when collaborating with the Professor, to which they can open our Flutter web applications in the exact same environment as we do, so they can experience and help with the exact same issues without needing to have access to the students device.
 
 ## Configuration
-
+* testing testing
 ## Integration with VSCode
 * VSCode has many tools to aid in the creation of DevContainers.
 * First off, VSCode allows you easily clone a GitHub repository, allowing you to open all of the files within a repository on your own machine.  You can then carry out any GitHub function, such as staging or committing changes back to the repository once you have done so.  This allows for very simple and efficient source control directly within VSCode.
