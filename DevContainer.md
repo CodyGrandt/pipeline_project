@@ -18,5 +18,5 @@
 * In order to setup the DevContainer and Docker for the first time, please refer to the README in this directory.
 * 
 ## Challenges and Solutions
-* One challenge I faced in the beginning was committing my changes to GitHub.  For some reason, the commit would just load forever and never commit.  To solve this problem, I discovered that using the command 'git commit -m 'insertmessagehere''
+* One challenge I faced in the beginning was committing my changes to GitHub.  For some reason, the commit would just load forever and never commit.  To solve this problem, I discovered that using the command `git commit -m 'insertmessagehere'`
 ## Conclusion
