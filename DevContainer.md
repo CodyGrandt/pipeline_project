@@ -11,7 +11,7 @@
 ## Integration with VSCode
 
 ## Usage
-
+#### Using the container in your development workflow
 ## Challenges and Solutions
 
 ## Conclusion
