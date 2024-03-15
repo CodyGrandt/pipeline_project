@@ -7,11 +7,44 @@
     * In our use case, this is extremely important when collaborating with the Professor, to which they can open our Flutter web applications in the exact same environment as we do, so they can experience and help with the exact same issues without needing to have access to the students device.
 
 ## Configuration
-* To configure the DevContainer, first I needed to choose a base **image**, which is essentially a Docker template for a flutter environment.  To do this in a cleaner fashion, a Dockerfile is utilized to keep the DevContainer simple.  In order to implement a Dockerfile in to your DevContainer, the beginning of your file should be similar to:
+* Firstly, for configuring your DevContainer, it is recommended that you also use a Dockerfile to keep the DevContainer clean.  To do so, ensure you have a Dockerfile created and implement something similar to:
 ```
 {
    "name" : "insertDesiredNameHere",
    "dockerFile" : "Dockerfile",
+```
+* This specifies that a separate Dockerfile will be used for specifications.
+* One of the most important aspects of a DevContainer is your base **image**, which is essentially template, and in this case a Docker template image for flutter applications.  Implementing a basic image can be done straight inside the DevContainer file, and should look similar to:
+```
+"image": "google/dart",
+```
+* However, through the use of a Dockerfile, this process can be designed more specifically for your needs.
+* Specific settings and extensions can also be specified in your DevContainer, installing exactly what is needed for the development process.  In my DevContainer, I have a specific setting for ensuring that the default terminal used is bash, which was done as shown:
+```
+"vscode" : {
+
+   "settings" : {
+
+      "terminal.integerated.shell.linux" : "/bin/bash"
+
+   },
+}
+```
+* I also have two extensions to be installed - Dart and flutter support, which can be done as shown:
+```
+"vscode" : {
+
+   "extensions" : [
+
+      "Dart-Code.dart-code",
+      "Dart-Code.flutter"
+
+   ]
+}
+```
+* I also have a post create command to have flutter create a test project, which can be done as shown:
+```
+"postCreateCommand" : "flutter create test_project"
 ```
 ## Integration with VSCode
 * VSCode has many tools to aid in the creation of DevContainers.
