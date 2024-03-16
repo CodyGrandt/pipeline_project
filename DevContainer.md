@@ -64,7 +64,17 @@
 ```
 cd default_flutter_app (or whatever your path file is called)
 ```
-* Once we are in the correct path, we can now run our flutter application
+* Once we are in the correct path, we can now run our flutter application.  To run our flutter application, we can use the command:
+```
+flutter run
+```
+* If working successfully, this action should prompt the user to enter the desired application destination (chrome, edge, windows app, etc.)  For our purposes, our main focus is to ensure this application works on the web, so I use chrome as a tester.  A new chrome tab should be created with the flutter web application running and working.
+* If you would like to have this web app running on a Docker container, then use the following commands:
+```
+docker build -t desiredNameHere .
+docker run -d -p XXXX:YY --name desiredNameHere desiredNameHere .
+```
+* This will build a local web server running the flutter application off of the Docker container.  Note that the XXXX:YY above are placeholders for your desired port number.  For testing, I use the numbers 8089:89.
 ## Challenges and Solutions
 * One challenge I faced in the beginning was committing my changes to GitHub.  For some reason, the commit would just load forever and never commit.  To solve this problem, I discovered that using the command `git commit -m 'insertmessagehere'`  This finally committed my changes to GitHub as expected.
 * Another challenge I faced when building my DevContainer was that my DevContainer could not find my source code when I was using a .devcontainer file to house my DevContainer and Dockerfile.  While not the best solution stylistically, currently I have my Dockerfile and DevContainer directly in the same folder as my app source code.  This allows the DevContainer to find my code.
