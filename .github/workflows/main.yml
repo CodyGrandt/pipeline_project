@@ -2,14 +2,11 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+    branches: 
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: checkout code
       - uses: actions/checkout@v3
