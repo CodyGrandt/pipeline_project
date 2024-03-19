@@ -1,9 +1,6 @@
 name: CI/CD Pipeline
 
-on:
-  push:
-    branches: 
-      - master
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,15 +14,15 @@ jobs:
           channel: 'stable'
 
       - name: install dependencies
-        working-directory: ./app
+      # working-directory: ./app
         run: flutter pub get
 
       - name: run tests
-        working-directory: ./app
+      # working-directory: ./app
         run: flutter test
 
       - name: build flutter web
-        working-directory: ./app
+      # working-directory: ./app
         run: flutter build web
 
       - name: deploy
