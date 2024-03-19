@@ -28,7 +28,12 @@ git clone https://github.com/CodyGrandt/pipeline_project
 git commit -m "insert desired commit message here"
 ```
 * This command commits all changes made to the files you cloned onto your machine back into the repository.  For example, if I had my files cloned over, then added a README file, wrote some text inside of this file, then wished for this README to be inserted into my repository, then I may type a command like so into the VSCode terminal: `git commit -m "created and wrote README"`
-* 
+```
+git branch branch_feature_name
+```
+* This command creates a new branch within your repository to allow you to begin working on a new feature for your project, without having it interfere with your already completed and working code.  The name given to the branch should be concise and represents the feature you intend on creating and implementing.  Once created, you will then need to use the following command to actually enter that branch: `git checkout branch_feature_name`.  For example, if I wished to create a new branch for multiplayer, the commands entered into the VSCode terminal look like so:
+`git branch multiplayer`
+`git checkout multiplayer`
 
 ## Collaboration Features
 
