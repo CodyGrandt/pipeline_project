@@ -1,5 +1,6 @@
 on: push
 name: CI/CD Pipeline
+
 jobs: 
   build: 
     name: build APK
@@ -25,6 +26,6 @@ jobs:
     - name: deploy 
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./default_flutter_app/build/web/
     
