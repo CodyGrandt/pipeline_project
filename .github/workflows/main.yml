@@ -12,7 +12,7 @@ jobs:
     - name: node.js setup
       uses: actions/setup-node@v1
       with:
-        node-version: '16'
+        node-version: '20'
         
     - name: java setup
       uses: actions/setup-java@v1
