@@ -29,12 +29,17 @@ git commit -m "insert desired commit message here"
 ```
 * This command commits all changes made to the files you cloned onto your machine back into the repository.  For example, if I had my files cloned over, then added a README file, wrote some text inside of this file, then wished for this README to be inserted into my repository, then I may type a command like so into the VSCode terminal: `git commit -m "created and wrote README"`
 ```
-git branch branch_feature_name
+git branch branch_name
 ```
-* This command creates a new branch within your repository to allow you to begin working on a new feature for your project, without having it interfere with your already completed and working code.  The name given to the branch should be concise and represents the feature you intend on creating and implementing.  Once created, you will then need to use the following command to actually enter that branch: `git checkout branch_feature_name`.  For example, if I wished to create a new branch for multiplayer, the commands entered into the VSCode terminal look like so:
-`git branch multiplayer`
-`git checkout multiplayer`
-
+* This command creates a new branch within your repository to allow you to begin working on a new feature for your project, without having it interfere with your already completed and working code.  The name given to the branch should be concise and represents the feature you intend on creating and implementing.  Once created, you will then need to use the following command to actually enter that branch: `git checkout branch_feature_name`.  For example, if I wished to create a new branch for multiplayer, the commands entered into the VSCode terminal look like so: `git branch multiplayer` and then `git checkout multiplayer`.
+```
+git merge branch_name
+```
+* This command merges the branch entered with the current branch.  For example, if I was in the main branch and I wished to merge my new multiplayer feature (which I had already tested to confirm that it worked), then I would type the following command into the VSCode terminal: `git merge multiplayer`
+```
+git revert <commit-hash>
+```
+* This command allows you to revert to a previous version of your repository before recent commits take place, hints the name and most important aspect of Version Control.  To do so, you must obtain the unique code assigned to each commit, then enter this command into the VSCode terminal in place of the `<commit-hash>` place holder written above.
 ## Collaboration Features
 
 ## Challenges and Solutions
