@@ -27,7 +27,7 @@ git clone https://github.com/CodyGrandt/pipeline_project
 ```
 git commit -m "insert desired commit message here"
 ```
-* This command commits all changes made to the files you cloned onto your machine back into the repository.  For example, if I had my files cloned over, then added a README file, wrote some text inside of this file, then wished for this README to be inserted into my repository, then I may type a command like so into the VSCode terminal: `git commit -m "created and wrote README"
+* This command commits all changes made to the files you cloned onto your machine back into the repository.  For example, if I had my files cloned over, then added a README file, wrote some text inside of this file, then wished for this README to be inserted into my repository, then I may type a command like so into the VSCode terminal: `git commit -m "created and wrote README"`
 * 
 
 ## Collaboration Features
