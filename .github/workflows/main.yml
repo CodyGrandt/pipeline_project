@@ -35,18 +35,7 @@ jobs:
       working-directory: ./default_flutter_app
       run: flutter build web
 
-  deploy:
-    name: Deploy Web Build
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Download Web Release
-      uses: actions/download-artifact@v1
-      with:
-        name: web-release
-
-    - name: Deploy to gh-pages
+    - name: deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
