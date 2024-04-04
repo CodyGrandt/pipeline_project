@@ -21,4 +21,28 @@ The tools used to create the CI/CD Pipeline for this project was through **[GitH
 3. GitHub Actions imposes resource constraints, such as limitations on ongoing workflows, workflow runtime, and usage minutes for self-hosted runners.  Organizations with high build volumes will need to manage their usage or upgrade to a higher tier plan.
 4. While GitHub Actions supports self-hosted runners for custom execution environments, this feature set may be more limited compared to cloud-hosted runners, especially in complex or distributed environments.
 ## Automation Process
-*
+The Following demostrates the automatic process the CI/CD pipeline follows to deploy:
+1. The pipeline is automatically triggered when changes are made to the source code.  Examples of this include code commits, pull requests, etc.  Once the CI/CD pipeline is triggered, the pipeline begins by carrying out the steps in the workflow (YAML) file.
+2. The Source Code from the repository is **Checked Out**, or duplicated to a designated workspace for further processing.  For this project, this is designated in the workflow by the following:
+```
+name: checkout code
+      uses: actions/checkout@v4
+
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'stable'
+```
+3. The necessary dependencies for developing and running flutter applications are installed.  For this project, this is designated in the workflow by the following:
+```
+name: install dependencies
+      working-directory: ./default_flutter_app
+      run: flutter pub get
+```
+4. Once the source code is checked out and the necessary dependencies are installed, then **Unit Testing** is carried out to verify the correctnedd of individual components or units of code in isolation.  The pipeline runs these automatic tests in order to verify the functionality of the code.  For this project, this is designated in the workflow by the following:
+```
+name: run test
+      working-directory: ./default_flutter_app
+      run: flutter test
+```
+
+   
