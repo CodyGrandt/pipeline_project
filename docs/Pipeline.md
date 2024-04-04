@@ -38,11 +38,25 @@ name: install dependencies
       working-directory: ./default_flutter_app
       run: flutter pub get
 ```
-4. Once the source code is checked out and the necessary dependencies are installed, then **Unit Testing** is carried out to verify the correctnedd of individual components or units of code in isolation.  The pipeline runs these automatic tests in order to verify the functionality of the code.  For this project, this is designated in the workflow by the following:
+4. Once the source code is checked out and the necessary dependencies are installed, then **Unit Testing** is carried out to verify the correctness of individual components or units of code in isolation.  The pipeline runs these automatic tests in order to verify the functionality of the code.  For this project, this is designated in the workflow by the following:
 ```
 name: run test
       working-directory: ./default_flutter_app
       run: flutter test
 ```
-
+   * **Integration Testing** is also carried out to verify the interactions between different components or modules of the flutter application.
+5. Once the code has been tested and verified to be working, then the complete code can be **compiled and built**.  For this project, this is designated in the workflow by the following:
+```
+name: build flutter web
+      working-directory: ./default_flutter_app
+      run: flutter build web
+```
+6. Once the flutter application has been successfully built, then it can be deployed.  This project deploys the flutter application to a GitHub Pages website, which can be found [HERE](https://codygrandt.github.io/pipeline_project/).  For this project, this is designated in the workflow by the following:
+```
+name: deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./default_flutter_app/build/web/
+```
    
