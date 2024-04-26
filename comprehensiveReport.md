@@ -217,10 +217,65 @@ To set up GitHub Pages for your Flutter application, you'll need to follow these
 * `github_token`: This is a GitHub secret token (secrets.GITHUB_TOKEN) that GitHub automatically creates for your repository. It's used to authenticate the action with GitHub, allowing it to push changes to your repository. Make sure your repository has the appropriate permissions (usually repository scope) for this token.
 * `publish_dir`: This specifies the directory where your built Flutter application files are located. In this case, it's set to ./default_flutter_app/build/web/. Adjust this path to match the actual directory structure of your Flutter project.
 ## Flutter Web Application
-*
-*
-*
+
+#### App Overview
+* The app created for this project is a todo app.  This app was coded in flutter which is based on Dart.  This app was specifically designed as a web application, however simple adjustments made to this project would easily allow this app to be deployed to other devices, such as IOS and Android.
+* This app supports the following features:
+   * Addition of new todo tasks
+   * deletion of current todo tasks
+   * checking off and crossing out todo tasks
+   * searching for tasks
+* The app also demonstrates simple graphic creation and asset manipulation as seen from the displayed avatar picture in the top right of the screen.
+#### App Structure
+* a `main.dart`file that combines all of the other `.dart` files into one neat file to build the full todo application.
+* a constants folder that contains a `colors.dart` file which contains all of the special colors utilized in this flutter app.
+* a model folder that contains a `todo.dart` file which contains the model todo list that the app displays upon deployment and when a user visits the web app.  Users can then change the todo list at their desire.
+* a screens folder that contains a `home.dart` file which contains the code for displaying the home screen of the flutter application.
+* a widgets folder which contains a `todo_item.dart` file which defines the structure of a todo item.
+#### Testing, Deployment, and Issues Faced
+* This specific flutter app, the todo app, currently does not have a testing process, and therefore the `main.yml` CI/CD file needed to be modified by commenting out the testing phase of the pipeline.  
+   * It is important to note that this testing phase does work properly when deploying the default flutter app found in the `default_flutter_app` directory.  To test this, one must change the `main.yml` file to access the `default_flutter_app` directory instead of the `flutter_todo_app` directory, and to uncomment out the testing phase.
+      * For example:
+      ```
+        #  - name: run test
+        #    working-directory: ./flutter_todo_app
+        #    run: flutter test
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./flutter_todo_app/build/web/
+      ```
+      * Found in the `main.yml` would need to be changed to the following code:
+      ```
+      - name: run test
+        working-directory: ./default_flutter_app
+        run: flutter test
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./default_flutter_app/build/web/
+      ```
+      * In order to properly see the testing phase of the flutter application.
+* This was one of the major issues faced during the development of this application.
+* Another major issue faced was that the original intention for this flutter app was to have the todo list on one half of the screen and a weather app on the other half of the screen, to create somewhat of a "*morning routine hub*".  However this has not yet been carried out due to issues in the location grabbing and manipulation in the weather app (which can be found in the `weather_app` folder), so currently the application is just the todo app.
+
 ## Conclusion
-*
-*
-*
+#### Lessons Learned
+* **VSCode** is the ultimate coding platform, not only for solo development thanks to its support for countless different languages, but also for its compatability with **Version Control Systems** and the combination of VSCode with **DevContainers** for team development.
+* **DevContainers** allow the exact dependencies and packages of a build of VSCode to be installed each time the program is opened.  When this is combined with a containerized image program such as **Docker**, the exact same build of VSCode can be run on a container instead of the developers machine.  Once every developer on the team is working on the same VSCode on a container, then the "*It works on my machine*" issue is eliminated.
+* **Version Control Systems (VCS)** are the most important aspect of team development.  While also useful solo developing, the tools these systems, such as GitHub provide make developing stress free.  By providing the ability to roleback to previous states ensures that work will never be lost.  branching allows individual team members to work on their own app features, then that work can be merged back to the main branch instantly or after other team member have verified that the work is sufficient.
+* **CI/CD pipelines**, standing for Continuous Integration/Continuous Deployment pipelines, are a set of automated processes that help software teams deliver code changes more frequently and reliably.
+   * **Continuous Integration (CI)** involves automatically intgrating code changes from multiple developers into a shared repository several times a day. Each integration triggers automated builds and tests to detect integration errors early in the development process.
+   * **Continuous Deployment (CD)** focuses on automating the deployment process to rele**ase code changes to production environments quickly and safely. It involves automating deployment steps, such as building artifacts, running tests, and deploying to production, typically triggered after successful CI.
+#### Challenges Faced
+* The DevContainer can be very difficult to build properly not only because of its confusing verbage and indentation, but also due to it being a very confusing process to develop.  The DevContainer in this project does not work fully and still needs to be completed.
+* Setting up GitHub pages can be confusing due to all of the settings that need to be changed in GitHub in order to setup the process.
+#### Potential Improvements:
+* Refinement of CI/CD Pipeline: Streamlining the CI/CD pipeline by optimizing build times, refining testing strategies, and automating deployment processes could improve efficiency and reduce deployment errors.
+* Enhanced Testing Coverage: Increasing testing coverage by incorporating more edge cases, scenario-based tests, and performance testing could further improve application reliability and quality.
+* Continuous Monitoring and Feedback: Implementing continuous monitoring tools and integrating feedback mechanisms into the pipeline would enable faster detection and resolution of issues in both the application and the pipeline itself.
+* Overall, the project provided valuable hands-on experience in developing and deploying Flutter applications, highlighting the importance of thorough testing, efficient CI/CD pipelines, and continuous improvement practices. By addressing the challenges encountered and implementing potential improvements, future Flutter projects can be executed more effectively, delivering high-quality applications with streamlined development and deployment processes.
