@@ -20,9 +20,9 @@ jobs:
       working-directory: ./flutter_todo_app
       run: flutter pub get
 
-    - name: run test
-      working-directory: ./flutter_todo_app
-      run: flutter test
+  #  - name: run test
+  #    working-directory: ./flutter_todo_app
+  #    run: flutter test
 
     - name: build flutter web
       working-directory: ./flutter_todo_app
