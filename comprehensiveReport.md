@@ -79,13 +79,51 @@ docker run -d -p XXXX:YY --name desiredNameHere desiredNameHere .
 * Once you are finished, you can close VSCode as the files will save in the devcontainer on your machine, or you can commit and push these changes back into the GitHub repository.
 
 ## Source Code Version Control Tools
-*
-*
-*
-## Version Control System Used
-*
-*
-*
+* **Version Control** is vital in software development for a multitide of reasons.  The most important use of version control is as the name describes: "*version control*," means that commiting changes to your code in your desired version control system, you are then able to "*control which version*" of your code you wish to easily view or make changes to.  This eliminates the stress of accidentally losing important code, or having your code work during one version then break it at a later version.
+* The use of **Version Control** is even more beneficial when collaborating in teams on a project.  Version control allows and provides a detailed history of changes made to files so you can see who made changes to a file, when they were made, and why they were made.  This is even more beneficial when the user adds commit messages to document their changes as they made and upload them.  Version control also allows for other vital documents, such as a README and even the file you are currently reading to exist, providing even more information about the project at hand.  All of the documentation previously mentioned is invaluable in software development and streamlines the development process.
+* Also, through the use of a code editor such as **Visual Studio Code**, anyone with access to the repository where these files exist can easily copy all of the necessary files for software development directly from the repository onto their machine.  From there they can edit said files, then commit the changes they make directly back into the repository.  This provides quite literally the easiest and most efficient way for all team members to access all of the files needed, without having to directly ask for one member to send files to another, or any other nightmare scenario you could come up with.
+### Version Control System Used
+* The Version Control System (VCS) used for this project is **GitHub**.  The main reason GitHub was chosen over other Version Control Systems, such as GitLab, is that when preparing for the original DevContainer assignment,  almost every video or article seen when conducting research was utilizing GitHub. This was the VCS that Professor Munday elected to use as well.  Despite this, more research needed to be conducted before deciding on a VCS.  The main factor for choosing GitHub over other VCS came out to be:
+   * **GitHub actions**.  This is a feature within GitHub that allows you to almost instantly creat, build, test, and deploy a continuous integration and continuous delivery (CI/CD) pipeline for your projects.  Since this was one of the main goals of this project, I felt that this was going to be a major help in the production process of this project.  Besides this major feature, GitHub also boasts other very useful features such as code reveiw tools, issue tracking, branching, merging, pull requests, etc., which all aid in the devlopment process.  I also felt like since GitHub was the most popular VCS, it would be more likely that another classmate or the professor would be able to help me in the event that I had an issue.  Finally, since I felt that GitHub had the cleanest and most familiar feeling user interface, I elected to use GitHub as my Version Control System.
+* If interested in getting started with GitHub after reading the previous section, feel free to sign up for free at their website [here](https://github.com/).
+* Once setting this up, if the user wish to begin testing making and commiting changes to this repository through VSCode, feel free to download VSCode from their website [here](https://code.visualstudio.com/download).
+### Repository Setup
+
+#### Repository Structure
+* This GitHub repository has six folders in the **master** branch: .devcontainer, .github, default_flutter_app, docs, flutter_todo_app, and weather_app   Inside .github are various files associated with GitHub and version control.  Inside default_flutter_app is where the default button clicker and counter flutter app created for testing the DevContainer, Docker, etc. as well as my actual DevContainer and Dockerfiles are located.  the files for the other apps are in their respective folders.  .devcontainer contains the devcontainer and dockerfile, and the docs folder contains various markdown files for reading purposes. There is also a main README in the root directory.
+* The branching strategy is to create a new branch for every new feature to be implemented or for every bug to be fixed.  This way any changes made for a specific feature/bug will be separate from the main branch to avoid changing code that already works.  Once a new feature works correctly, then this branch will be merged with the master branch.
+
+#### Implementation With DevContainer and CI/CD Pipeline
+* By creating a DevContainer and inserting it within a project directory in a VCS, any other collaborators who need to work on the project can download and use the DevContainer to have their coding environment setup exactly how the lead on the project wishes the coding environment to be setup.  This eliminates the "*It works on my machine*" issue in software development as each individual who downloads the project files and DevContainer from the VCS repository will have their coding environments opened with the exact same settings setup.
+* Many of the most popular VCS have some sort of tools to aid in the creation of a **Continuous Integration/Continuous Deployment (CI/CD)** pipeline. For example, GitHub has GitHub Actions and GitLab has GitLab CI. This does as the name describes; it automates the process of testing and deploying code changes within your repository.  By utilizing these tools, in my case GitHub Actions, a CI/CD pipeline is created using a YAML file that specifies the steps to build, test, and deploy your project.
+
+### Common Commands and Usage
+```
+git clone https://github.com/CodyGrandt/pipeline_project
+```
+* This command clones the specified repository, allowing you to save all of the files within the repository onto your machine where you can then begin to work on said project.  The exact command listed above is what I would type into the VSCode terminal in order to clone my pipeline_project repository onto my local machine.
+```
+git commit -m "insert desired commit message here"
+```
+* This command commits all changes made to the files you cloned onto your machine back into the repository.  For example, if I had my files cloned over, then added a README file, wrote some text inside of this file, then wished for this README to be inserted into my repository, then I may type a command like so into the VSCode terminal: `git commit -m "created and wrote README"`
+```
+git branch branch_name
+```
+* This command creates a new branch within your repository to allow you to begin working on a new feature for your project, without having it interfere with your already completed and working code.  The name given to the branch should be concise and represents the feature you intend on creating and implementing.  Once created, you will then need to use the following command to actually enter that branch: `git checkout branch_feature_name`.  For example, if I wished to create a new branch for multiplayer, the commands entered into the VSCode terminal look like so: `git branch multiplayer` and then `git checkout multiplayer`.
+```
+git merge branch_name
+```
+* This command merges the branch entered with the current branch.  For example, if I was in the main branch and I wished to merge my new multiplayer feature (which I had already tested to confirm that it worked), then I would type the following command into the VSCode terminal: `git merge multiplayer`
+```
+git revert <commit-hash>
+```
+* This command allows you to revert to a previous version of your repository before recent commits take place, hints the name and most important aspect of Version Control.  To do so, you must obtain the unique code assigned to each commit, then enter this command into the VSCode terminal in place of the `<commit-hash>` place holder written above.
+### Collaboration Features
+* Version Control is the single most beneficial tool to collaboration among team members.  By having a shared repository where all of the necessary project files are located and where team members can push their changes back into this repository, the software development process is streamlined by eliminating the need to ask other team members from files as they are all located within the repository.
+* Each team member can create their own branch to work on their specific task without interfering with the main code.  Once this feature is completed, it can either be committed back into the main branch of the repository, or a **pull request** can be made.
+* **A pull request** proposes changes to the main code of the project, instead of automatically committing these changes.  Team members can then *review the code* and the changes made and provide feedback before this change is made to the main code of the project.
+* **Code Review** is a vital part of collaborating in the software development process.  First off, this promotes discussions within team members, and allows team members to become familiar with your section of the project.  This maintains a streamlined development process as team members stay on the same page about the goal of the project.  Also, since everyone makes mistakes, it is invaluable to have others to bounce your code off of, having them look for bugs and also ensuring that your code is up to standard in quality.  This should also be carried out once a pull request is made for a specific feature, so that the other team members can confirm that this feature should be merged with the main source code.
+* Version Control is also great in aiding teams in the event of **conflict resolution** occurring.  This is when two team members make changes to the same code.  By utilizng Version Control tools such as reverting to previous commit stages, this is great for resolving conflicts that arise in the devlopment process.
 ## CI/CD Pipeline Environment
 * In order to support agile software development and deployment, the infrastructure of the CI/CD pipeline needs to be hosted on a **cloud-based platform**.  Depending on the CI/CD Pipeline tools used, the infrastructure could be hosted on Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP).  This project utilizes GitHub Actions (*refer to the CI/CD  Tools section to learn why*) which is hosted using the **Microsoft Azure** cloud platform, which has the GitHub Actions runner application installed.
 * GitHub Actions provides runners that can be used to run jobs, or the user can host their own runners.  Each GitHub-hosted runner is a new Virtual Machine hosted by GitHub, and is available with **Ubuntu Linux, Windows, or MacOS operating Systems**. [Click to learn more about GitHub-hosted Runners](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners%23:~:text%3DGitHub%2520provides%2520runners%2520that%2520you,Windows%252C%2520or%2520macOS%2520operating%2520systems.&ved=2ahUKEwiu3tmb-KaFAxWW4MkDHQ5aCv4QFnoECA4QAw&usg=AOvVaw24zN_xo0hfHe6UtdziPKUi)
@@ -147,9 +185,37 @@ name: deploy
 ```
    
 ## Deployment Environment
-*
-*
-*
+### Development Environment Chosen
+* GitHub Pages is a web hosting service provided by GitHub that hosts static websites directly from GitHub repositories. It's a convenient and free way to showcase projects, create personal websites, host documentation, and more.
+* [GitHub Pages](https://pages.github.com/) was chosen for a number of reasons:
+   * **easy deployment**:  websites can be deployed from GitHub Actions immediately after testing and can even be defined in the same file.  Whenever changes are pushed to the repository, GitHub Pages will automatically deploy and update the website.
+   * **Version Control**: since all website files are stored in a GitHub repository, you benefit from version control features such as commit history, branching, and pull requests. This allows you to track changes to your site over time and collaborate with others on its development.
+   * **Custom Domain Support**: GitHub Pages allows you to use a custom domain name for your website, giving it a professional appearance and allowing you to maintain consistent branding across your online presence.
+   * **Free Hosting**: GitHub Pages provides free hosting for static websites directly from your GitHub repository. This is particularly advantageous for open-source projects and personal websites, as it eliminates the need to pay for separate hosting services.
+
+### Setting Up GitHub Pages
+To set up GitHub Pages for your Flutter application, you'll need to follow these general steps:
+1. Build your Flutter application: Make sure your Flutter application is built and generates static web files. The `flutter build web` command is typically used for this purpose. Ensure that the output files are stored in a directory that you specify in the `publish_dir` parameter.
+2. Create a GitHub Actions workflow: Create a `.github/workflows/deploy.yml` file (*this is combined with the test file into one main.yml file*) in your repository with the provided deployment code. This workflow will run automatically whenever changes are pushed to your repository, deploying your Flutter application to GitHub Pages.
+3. Configure GitHub Pages settings: Go to your repository's Settings page on GitHub, then navigate to the "Pages" section. Select the `gh-pages` branch as the source for GitHub Pages, and make sure the root folder is set to /. This tells GitHub Pages to serve your website from the `gh-pages` branch.
+4. Commit and push your changes: Commit your changes to your repository and push them to GitHub. GitHub Actions will automatically trigger the deployment workflow, and your Flutter application should be deployed to GitHub Pages shortly thereafter.
+
+* Once these steps are completed, your Flutter application should be accessible via a URL in the format `https:// username.github.io/repository-name, where usernameis your GitHub username andrepository-name` is the name of your repository. You can share this URL with others to access your deployed Flutter application.
+
+### Code
+* For this specific project, the main.yml file contains the following code segment to deploy to GitHub Pages:
+```
+- name: deploy
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./default_flutter_app/build/web/
+```
+* `name`: This is the name of the step in your GitHub Actions workflow. In this case, it's named "deploy."
+* `uses`: This specifies the GitHub Actions action that you're using for this step. `The peaceiris/actions-gh-pages@v3` action is used to deploy your application to GitHub Pages. This action automates the process of pushing your files to the gh-pages branch, which GitHub Pages uses to serve your website.
+* `with`: This is used to provide input parameters to the action.
+* `github_token`: This is a GitHub secret token (secrets.GITHUB_TOKEN) that GitHub automatically creates for your repository. It's used to authenticate the action with GitHub, allowing it to push changes to your repository. Make sure your repository has the appropriate permissions (usually repository scope) for this token.
+* `publish_dir`: This specifies the directory where your built Flutter application files are located. In this case, it's set to ./default_flutter_app/build/web/. Adjust this path to match the actual directory structure of your Flutter project.
 ## Flutter Web Application
 *
 *
